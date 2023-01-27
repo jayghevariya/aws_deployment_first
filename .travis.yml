@@ -1,0 +1,16 @@
+language: generic
+services:
+  - docker
+
+# deploy:
+#   provider: elasticbeanstalk
+#   region: "ap-south-1"        # Region in AWS Elastic Beanstalk (copy from AWS)
+#   app: "my-demo-app"           # Name of the app in AWS Elastic Beanstalk (copy from AWS)
+#   env: "Mydemoapp-env"        # Name of the environment in AWS Elastic Beanstalk (copy from AWS)
+
+#   access_key_id: $AWS_ACCESS_KEY          # 
+#   secret_access_key: $AWS_SECRET_KEY      # 
+
+#   bucket_name: "elasticbeanstalk-us-east-2-123456789" # Name of the S3 bucket (copy from AWS)
+#   on:
+#     branch: main
