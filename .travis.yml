@@ -1,18 +1,7 @@
-language: generic
-install:
-  - docker-compose build
+sudo: required
 services:
   - docker
-
-# deploy:
-#   provider: elasticbeanstalk
-#   region: "ap-south-1"        # Region in AWS Elastic Beanstalk (copy from AWS)
-#   app: "my-demo-app"           # Name of the app in AWS Elastic Beanstalk (copy from AWS)
-#   env: "Mydemoapp-env"        # Name of the environment in AWS Elastic Beanstalk (copy from AWS)
-
-#   access_key_id: $AWS_ACCESS_KEY          # 
-#   secret_access_key: $AWS_SECRET_KEY      # 
-
-#   bucket_name: "elasticbeanstalk-us-east-2-123456789" # Name of the S3 bucket (copy from AWS)
-#   on:
-#     branch: main
+before_install:
+  - docker build -t jayghevariya/docker-react -f Dockerfile.dev .
+script:
+  - docker run -e CI=true jayghevariya/docker-react npm run test -- --coverage  # -- --coverage is used to exit the test after running # CI=true 
