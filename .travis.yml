@@ -1,4 +1,6 @@
 language: generic
+install:
+  - docker-compose build
 services:
   - docker
 
