@@ -9,6 +9,8 @@ on:
 env:
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+  AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
 
 jobs:
 
@@ -22,8 +24,8 @@ jobs:
       run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - name: Build the Docker image
       run: docker-compose build
-    - name: push the Docker image to Docker Hub
-      run: docker push $DOCKER_USERNAME/web
+    # - name: push the Docker image to Docker Hub
+    #   run: docker push $DOCKER_USERNAME/web
     - name: Beanstalk deploy for Docker image
       uses: einaregilsson/beanstalk-deploy@v16
       with:
