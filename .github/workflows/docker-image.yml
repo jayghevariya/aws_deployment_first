@@ -36,5 +36,5 @@ jobs:
         version_label: "web-v1"
         region: "ap-south-1"
         bucket_name: "myfirst-app-bucket"
-        deployment_package: "jayghevariya/web"
-        wait_for_deploy: true
+        zip_file: "docker-compose.yml"
+        
