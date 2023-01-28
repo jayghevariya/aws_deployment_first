@@ -29,7 +29,7 @@ jobs:
     - name: make deployment zip file
       run: zip -r web-v1.zip docker-compose.yml
     - name: Beanstalk deploy for Docker image
-      uses: elasticbeanstalk-actions/eb-deploy@v1
+      uses: aws-actions/aws-elastic-beanstalk-deploy@v1
       with:
         aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
         aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
