@@ -1,6 +1,7 @@
 version: '3'
 services:
   web:
+    image: jayghevariya/web:latest
     build: 
       context: .
       dockerfile: Dockerfile.dev
@@ -10,6 +11,7 @@ services:
       - /app/node_modules
       - .:/app
   tests:
+    image: jayghevariya/test:latest
     build: 
       context: .
       dockerfile: Dockerfile.dev
