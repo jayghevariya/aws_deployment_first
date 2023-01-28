@@ -39,5 +39,5 @@ jobs:
         region: "ap-south-1"
         bucket_name: "elasticbeanstalk-ap-south-1-773278989480"
         bucket_path: "my-demo-app"
-        zip_file: "web-v1.zip"
+        deployment_package: "web-v1.zip"
         wait_for_deploy: true
