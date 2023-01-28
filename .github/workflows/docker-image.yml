@@ -29,7 +29,7 @@ jobs:
     - name: make deployment zip file
       run: zip -r web-v1.zip docker-compose.yml
     - name: Beanstalk deploy for Docker image
-      uses: aws-actions/aws-elastic-beanstalk-deploy@v1
+      uses: einaregilsson/beanstalk-deploy@v16
       with:
         aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
         aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
@@ -39,5 +39,4 @@ jobs:
         region: "ap-south-1"
         bucket_name: "elasticbeanstalk-ap-south-1-773278989480"
         bucket_path: "my-demo-app"
-        zip_file: "web-v1.zip"
         wait_for_deploy: true
