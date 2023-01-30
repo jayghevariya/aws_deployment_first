@@ -45,4 +45,5 @@ jobs:
         version_label: "first-app-deplpyment-${{ steps.format-time.outputs.replaced }}"
         region: ap-south-1
         bucket_name: myfirst-app-bucket
+        bucket_path: my-first-app
         deployment_package: deploy.zip
