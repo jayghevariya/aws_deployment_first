@@ -38,11 +38,10 @@ jobs:
     - name: Deploy to EB
       uses: einaregilsson/beanstalk-deploy@v21
       with:
-        aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
-        aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-        application_name: WebAws
-        environment_name: Webaws-env
+        aws_access_key: AKIA3ICYE7SUB3TDASNP
+        aws_secret_key: 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
+        application_name: AWS_P
+        environment_name: Awsp-env
         version_label: "first-app-deplpyment-${{ steps.format-time.outputs.replaced}}"
         region: ap-south-1
-        deployment_package: deploy.zip
-        
+        deployment_package: docker-compose.yml
