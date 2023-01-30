@@ -45,3 +45,4 @@ jobs:
         version_label: "first-app-deplpyment-${{ steps.format-time.outputs.replaced}}"
         region: ap-south-1
         deployment_package: deploy.zip
+        
