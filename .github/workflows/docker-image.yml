@@ -19,12 +19,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-        uses: actions/checkout@v2
-      
-    - name: Generate Deployment Package
-      uses: zip -r deploy.zip * -x "**node_modules**"
-
-    - name: Get time stamp
-      uses: gerred/actions/current-time@master
-      id: current-time
+    - uses: actions/checkout@v3
+    - name: Login to Docker Hub
+      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    
