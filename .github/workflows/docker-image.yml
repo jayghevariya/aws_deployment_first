@@ -45,4 +45,4 @@ jobs:
         version-label: "deployable-version-${{steps.format-time.outputs.replaced}}"
         version_label: 12345
         region: ap-south-1
-        deployment_package: deploy.zip
+        # deployment_package: deploy.zip
