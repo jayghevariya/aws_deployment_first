@@ -44,4 +44,5 @@ jobs:
         environment_name: Myfirstapp-env
         version_label: "first-app-deplpyment-${{ steps.format-time.outputs.replaced }}"
         region: ap-south-1
+        bucket_name: myfirst-app-bucket
         deployment_package: deploy.zip
