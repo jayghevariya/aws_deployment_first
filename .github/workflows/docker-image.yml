@@ -11,3 +11,33 @@ env:
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
   AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
   AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Login to Docker Hub
+      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    - name: Build the Docker image
+      run: docker-compose build
+    # - name: push the Docker image to Docker Hub
+    #   run: docker push $DOCKER_USERNAME/web
+    - name: make deployment zip file
+      run: zip -r web-v1.zip docker-compose.yml
+    - name: Beanstalk deploy for Docker image
+      uses: einaregilsson/beanstalk-deploy@v16
+      with:
+        aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+        aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
+        application_name: "my-demo-app"
+        environment_name: "Mydemoapp-env"
+        version_label: "web-v1"
+        region: "ap-south-1"
+        bucket_name: "elasticbeanstalk-ap-south-1-773278989480"
+        bucket_path: "my-demo-app"
+        deployment_package: "web-v1.zip"
+        wait_for_deploy: true
