@@ -35,3 +35,14 @@ jobs:
         string: "${{ steps.current-time.outputs.time }}"
         replace-with: '-'
         flags: 'g'
+    - name: Deploy to EB
+      uses: einaregilsson/beanstalk-deploy@v21
+      with:
+        aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+        aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
+        application_name: my-first-app
+        environment_name: Myfirstapp-env
+        version-label: "deployable-version-${{steps.format-time.outputs.replaced}}"
+        version_label: 12345
+        region: ap-south-1
+        deployment_package: deploy.zip
