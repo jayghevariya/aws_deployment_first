@@ -36,7 +36,7 @@ jobs:
         replace-with: '-'
         flags: 'g'
     - name: Deploy to EB
-      uses: einaregilsson/beanstalk-deploy@v21
+      uses: einaregilsson/beanstalk-deploy@v14
       with:
         aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
         aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
@@ -45,4 +45,4 @@ jobs:
         version-label: "deployable-version-${{steps.format-time.outputs.replaced}}"
         version_label: 12345
         region: ap-south-1
-        # deployment_package: deploy.zip
+        deployment_package: deploy.zip
