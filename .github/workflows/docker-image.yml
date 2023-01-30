@@ -47,3 +47,4 @@ jobs:
         bucket_name: myfirst-app-bucket
         bucket_path: my-first-app
         deployment_package: deploy.zip
+        
