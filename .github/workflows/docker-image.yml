@@ -11,39 +11,3 @@ env:
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
   AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
   AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      
-      - name: Generate Deployment Package
-        uses: zip -r deploy.zip * -x "**node_modules**"
-
-      - name: Get time stamp
-        uses: gerred/actions/current-time@master
-        id: current-time
-
-      - name: Run string replace
-        uses: frabert/replace-string-action@master
-        id: format-time
-        with: 
-          pattern: '[:\.]+'
-          string: ${{ steps.current-time.outputs.time }}
-          replace-with: '-'
-          flags: 'g'
-
-      - name: Deploy to EB
-        uses: einaregilsson/beanstalk-deploy@v21
-        with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-          application_name: my-first-app
-          environment_name: Myfirstapp-env
-          version-label: "deployable-version-${{steps.format-time.outputs.replaced}}"
-          version_label: 12345
-          region: ap-south-1
-          deployment_package: deploy.zip
-
