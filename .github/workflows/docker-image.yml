@@ -42,6 +42,6 @@ jobs:
         aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
         application_name: my-first-app
         environment_name: Myfirstapp-env
-        version-label: "deployable-version-${{steps.format-time.outputs.replaced}}"
+        version_label: "first-app-deplpyment-${{ steps.format-time.outputs.replaced }}"
         region: ap-south-1
         deployment_package: deploy.zip
